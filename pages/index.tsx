@@ -4,16 +4,34 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import footer from '../styles/Footer.module.scss'
 
-import homeImg from '../public/home-img.png'
-import homeFooter from '../public/home-footer.png'
-
 import Button from '../components/Button'
 import Section from '../components/Section'
 
+import homeImg from '../public/home-img.png'
+import homeFooter from '../public/home-footer.png'
+import content01 from '../public/content01.jpg'
+import content02 from '../public/content02.jpg'
+import content03 from '../public/content03.jpg'
+
 const sections = [
-  { title: 'string', subTitle: 'string', image: 'string' },
-  { title: 'string', subTitle: 'string', image: 'string' },
-  { title: 'string', subTitle: 'string', image: 'string' },
+  {
+    title: 'Lucky Strike?',
+    subTitle: 'Content 01 どんなグループなの？',
+    image: content01,
+    reverse: false,
+  },
+  {
+    title: 'STORY',
+    subTitle: 'Content 02 ワンマンライブ開催の物語',
+    image: content02,
+    reverse: true,
+  },
+  {
+    title: 'DETAIL',
+    subTitle: 'Content 03 ワンマンライブ詳細情報',
+    image: content03,
+    reverse: false,
+  },
 ]
 
 const Home: NextPage = () => {
@@ -40,9 +58,9 @@ const Home: NextPage = () => {
 
         <Button text='チケットはこちら' color='green' />
 
-        <div className={styles.grid}>
+        <div>
           {sections.map((_, index) => (
-            <Section key={index} />
+            <Section key={index} {..._} />
           ))}
         </div>
       </main>
