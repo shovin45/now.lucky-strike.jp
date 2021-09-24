@@ -30,9 +30,16 @@ a {
     border-width: 16px;
   }
 
+  .h-screen {
+    height: calc($vh * 100);
+  }
+  .min-h-screen {
+    min-height: calc($vh * 100);
+  }
+
   @each $num in (80, 60, 40, 20, 10) {
     .h-screen-#{$num} {
-      height: #{$num}vh;
+      height: calc($vh * $num);
     }
   }
 }

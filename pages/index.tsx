@@ -50,10 +50,10 @@ const Home: NextPageWithLayout = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className='flex justify-center items-center sm:p-24 px-5 pt-16 w-full h-screen'>
-        <div className='flex relative justify-center items-center w-full h-full border-16'>
+      <div className='flex justify-center items-center p-10 sm:p-24 px-5 pt-16 w-full h-screen'>
+        <div className='flex relative justify-center items-center w-full h-full border-8 sm:border-16'>
           <h1
-            className={`absolute bottom-16 lg:bottom-2/4 -left-10 md:-left-16 text-2xl font-bold translate-y-10 mix-blend-difference`}
+            className={`absolute bottom-16 lg:bottom-2/4 -left-6 sm:-left-16 text-2xl font-bold translate-y-10 mix-blend-difference`}
           >
             Lucky Strike
             <br />

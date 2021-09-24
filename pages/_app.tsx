@@ -6,6 +6,9 @@ import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
+import Window from '../plugins/Window'
+import AOS from '../plugins/Aos'
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -14,16 +17,15 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-import AOS from 'aos'
-
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  AOS()
+
   const getLayout = Component.getLayout ?? ((page) => page)
-  React.useEffect(() => {
-    AOS.init({
-      easing: 'ease-out-sine',
-      duration: 600,
-    })
-  }, [])
-  return getLayout(<Component {...pageProps} />)
+  return getLayout(
+    <>
+      <Component {...pageProps} />
+      <Window />
+    </>,
+  )
 }
 export default MyApp

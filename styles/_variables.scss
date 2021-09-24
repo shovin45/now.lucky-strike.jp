@@ -10,3 +10,5 @@ $colors: (
 @function colors($key) {
   @return map-get($colors, $key);
 }
+
+$vh: var(--vh);
