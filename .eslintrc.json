@@ -1,4 +1,12 @@
 {
   "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
-  "plugins": ["tailwindcss"]
+  "plugins": ["tailwindcss"],
+  "rules": {
+    "tailwindcss/no-custom-classname": [
+      1,
+      {
+        "whitelist": ["h\\-screen\\-\\d\\d", "border\\-\\d\\d"]
+      }
+    ]
+  }
 }
