@@ -5,7 +5,7 @@
     "tailwindcss/no-custom-classname": [
       1,
       {
-        "whitelist": ["h\\-screen\\-\\d\\d", "border\\-\\d\\d"]
+        "whitelist": ["h\\-screen\\-\\d\\d", "border\\-\\d\\d", "transition-.*"]
       }
     ]
   }
