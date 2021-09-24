@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
+import { debounce } from 'mabiki'
+
 const Window = () => {
   const [style, setStyle] = useState(':root {}')
   useEffect(() => {
@@ -7,10 +9,10 @@ const Window = () => {
       setStyle(`:root { --vh: ${window.innerHeight / 100}px }`)
     }
     resize()
-    addEventListener('resize', resize)
+    addEventListener('resize', debounce(resize, 200))
 
     return () => {
-      removeEventListener('resize', resize)
+      removeEventListener('resize', debounce(resize, 200))
     }
   }, [])
 
