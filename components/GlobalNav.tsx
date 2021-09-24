@@ -33,7 +33,7 @@ const GlobalNav: React.FC<Props> = ({ className }) => {
         {nav.map(({ name, href }) => {
           return (
             <li
-              className='p-4 sm:p-5 last:pr-0 text-xs sm:text-base font-bold'
+              className='p-3 sm:p-5 last:pr-0 text-xs sm:text-base font-bold'
               key={name}
             >
               <Link href={href}>{name}</Link>
