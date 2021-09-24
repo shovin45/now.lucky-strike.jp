@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 @import '_variables';
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&display=swap');
 
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Archivo;
+  font-family: 'Archivo', sans-serif;
   font-weight: normal;
 
   background-color: #000;
