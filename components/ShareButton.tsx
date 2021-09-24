@@ -19,7 +19,7 @@ const ShareButton: React.FC<Props> = ({ className }) => {
   const [url, setUrl] = useState('')
   useEffect(() => {
     setUrl(window.location.href)
-  })
+  }, [])
   return (
     <>
       <div className={className}>

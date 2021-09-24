@@ -1,17 +1,24 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import Button from './Button'
-
-import Image from 'next/image'
 
 type Props = {
   title?: string
   subTitle?: string
   image?: any
   reverse?: boolean | null
+  href: string
 }
 
-const Section: React.FC<Props> = ({ title, subTitle, image, reverse }) => {
+const Section: React.FC<Props> = ({
+  title,
+  subTitle,
+  image,
+  reverse,
+  href,
+}) => {
   return (
     <>
       <div className={`border-t-4 last:border-b-4 w-full`} data-aos='fade-up'>
@@ -35,12 +42,16 @@ const Section: React.FC<Props> = ({ title, subTitle, image, reverse }) => {
                 {title}
               </h2>
             </hgroup>
-            <Button
-              className='mx-auto lg:mx-0 mt-8 lg:mt-16'
-              text='詳細はこちら'
-              color='yellow'
-              data-aos='fade-up'
-            />
+            <Link href={href}>
+              <a>
+                <Button
+                  className='mx-auto lg:mx-0 mt-8 lg:mt-16'
+                  text='詳細はこちら'
+                  color='yellow'
+                  data-aos='fade-up'
+                />
+              </a>
+            </Link>
           </div>
 
           <div

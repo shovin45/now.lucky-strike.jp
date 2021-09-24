@@ -24,6 +24,6 @@
 @each $key, $color in $colors {
   .#{$key} {
     background-color: $color;
-    filter: drop-shadow(0px 5px 50px $color);
+    filter: drop-shadow(0px 5px 25px rgba($color, 0.6));
   }
 }
