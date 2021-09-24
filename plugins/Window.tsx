@@ -9,10 +9,10 @@ const Window = () => {
       setStyle(`:root { --vh: ${window.innerHeight / 100}px }`)
     }
     resize()
-    addEventListener('resize', debounce(resize, 200))
+    addEventListener('orientationchange', debounce(resize, 200))
 
     return () => {
-      removeEventListener('resize', debounce(resize, 200))
+      removeEventListener('orientationchange', debounce(resize, 200))
     }
   }, [])
 
