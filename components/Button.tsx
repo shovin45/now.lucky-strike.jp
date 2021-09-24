@@ -5,12 +5,13 @@ import button from '../styles/Button.module.scss'
 type Props = {
   text?: string
   color: 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'pink'
+  className?: string
 }
 
-const Button: React.FC<Props> = ({ text, color }) => {
+const Button: React.FC<Props> = ({ text, color, className }) => {
   return (
     <>
-      <button className={`${button.button} ${button[color]}`}>
+      <button className={`${className} ${button.button} ${button[color]}`}>
         {text}{' '}
         <svg
           width='6'

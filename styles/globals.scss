@@ -23,3 +23,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@layer utilities {
+  .border-16 {
+    border-width: 16px;
+  }
+
+  @each $num in (80, 60, 40, 20, 10) {
+    .h-screen-#{$num} {
+      height: #{$num}vh;
+    }
+  }
+}

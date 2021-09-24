@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
-import footer from '../styles/Footer.module.scss'
 
 import Button from '../components/Button'
 import Section from '../components/Section'
+import ShareButton from '../components/ShareButton'
 
-import homeImg from '../public/home-img.png'
 import homeFooter from '../public/home-footer.png'
 import content01 from '../public/content01.jpg'
 import content02 from '../public/content02.jpg'
@@ -43,31 +43,60 @@ const Home: NextPage = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
+      <header className=''>
+        <div className='flex justify-center items-center w-full h-screen'>
+          <div className='flex relative justify-center items-center w-10/12 h-5/6 border-16'>
+            <h1
+              className={`${styles.title} absolute bottom-16 lg:bottom-2/4 -left-10 md:-left-16 text-2xl font-bold translate-y-10`}
+            >
+              Lucky Strike
+              <br />
+              ワンマンライブ「NOW」
+              <br />
+              チケット発売中！
+            </h1>
+            <Image src='/home-img.png' alt='' width={500} height={400} />
+            <a
+              className='hidden md:inline-block absolute md:-right-20 md:bottom-2/4 p-1 text-sm font-bold border-2 transform rotate-90 translate-x-20 translate-y-1'
+              href='https://eplus.jp/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Ticket sales site eplus.
+            </a>
+          </div>
+        </div>
+
+        <Button
+          className='my-12 sm:my-16 mx-auto'
+          text='チケットはこちら'
+          color='green'
+        />
+      </header>
+
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Lucky Strike
-          <br />
-          ワンマンライブ「NOW」
-          <br />
-          チケット発売中！
-        </h1>
-
-        <Image src='/home-img.png' alt='' width={500} height={400} />
-
-        <p className={styles.description}>Ticket sales site eplus.</p>
-
-        <Button text='チケットはこちら' color='green' />
-
         <div>
           {sections.map((_, index) => (
             <Section key={index} {..._} />
           ))}
         </div>
+        <Button
+          className='my-12 sm:my-16 mx-auto'
+          text='チケットはこちら'
+          color='green'
+        />
       </main>
 
-      <footer className={footer.footer}>
-        <Image src={homeFooter} alt='Picture of the author' />
-        <small className='text-lg'>© 2021 — Lucky Strike</small>
+      <Image src={homeFooter} alt='Picture of the author' />
+
+      <footer className='text-center'>
+        <div className='flex flex-col justify-center h-screen-40'>
+          <p className='mb-2 text-lg font-bold'>Share</p>
+          <ShareButton className='block mb-10' />
+        </div>
+        <small className='flex flex-col justify-center text-xs h-screen-10'>
+          © 2021 — Lucky Strike
+        </small>
       </footer>
     </div>
   )
