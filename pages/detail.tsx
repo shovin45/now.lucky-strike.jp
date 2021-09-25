@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import content from '../plugins/content'
 
-import content03 from '../public/content03.jpg'
+import content03 from '../public/content03.png'
 import NestedSection from '../components/NestedSection'
 
 const Detail: NextPageWithLayout = () => {
@@ -25,7 +25,7 @@ const Detail: NextPageWithLayout = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <NestedSection image={content03} title={title}>
+      <NestedSection image={content03} title={title} position='right center'>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
       </NestedSection>
     </div>

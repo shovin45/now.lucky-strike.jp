@@ -25,7 +25,7 @@ const Story: NextPageWithLayout = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <NestedSection image={content02} title={title}>
+      <NestedSection image={content02} title={title} position='center'>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
       </NestedSection>
     </div>
