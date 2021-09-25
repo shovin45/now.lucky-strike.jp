@@ -1,12 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 
+import styles from '../styles/Markdown.module.scss'
+
 type Props = {
   image: StaticImageData
   title?: string
 }
 
-const NestedSection: React.FC<Props> = ({ image, title }) => {
+const NestedSection: React.FC<Props> = ({ image, title, children }) => {
   return (
     <article>
       <div
@@ -20,6 +22,10 @@ const NestedSection: React.FC<Props> = ({ image, title }) => {
         <h2 className='text-7xl sm:text-8xl font-bold mix-blend-overlay'>
           {title}
         </h2>
+      </div>
+
+      <div className={`px-4 mx-auto mt-14 max-w-screen-lg ${styles.md}`}>
+        {children}
       </div>
     </article>
   )

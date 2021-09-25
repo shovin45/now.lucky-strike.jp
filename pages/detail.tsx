@@ -3,11 +3,17 @@ import type { NextPageWithLayout } from './_app'
 import Head from 'next/head'
 import NestedLayout from '../layouts/NestedLayout'
 
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import content from '../plugins/content'
+
 import content03 from '../public/content03.jpg'
 import NestedSection from '../components/NestedSection'
 
 const Detail: NextPageWithLayout = () => {
   const title = 'DETAIL'
+  const markdown = content.detail
+
   return (
     <div className='relative pt-12 sm:pt-20 min-h-screen'>
       <Head>
@@ -19,7 +25,9 @@ const Detail: NextPageWithLayout = () => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <NestedSection image={content03} title={title} />
+      <NestedSection image={content03} title={title}>
+        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
+      </NestedSection>
     </div>
   )
 }
