@@ -7,7 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import content from '../plugins/content'
 
-import content02 from '../public/content02.jpg'
+import content02 from '../public/content02.png'
 import NestedSection from '../components/NestedSection'
 
 const Story: NextPageWithLayout = () => {

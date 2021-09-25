@@ -7,7 +7,7 @@ const Aos = () => {
     AOS.init({
       easing: 'ease-out-cubic',
       duration: 1000,
-      offset: 300,
+      offset: 150,
       once: true,
     })
   }, [])

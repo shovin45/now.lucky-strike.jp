@@ -10,9 +10,9 @@ import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 
 import homeFooter from '../public/home-footer.png'
-import content01 from '../public/content01.jpg'
-import content02 from '../public/content02.jpg'
-import content03 from '../public/content03.jpg'
+import content01 from '../public/content01.png'
+import content02 from '../public/content02.png'
+import content03 from '../public/content03.png'
 
 const sections = [
   {
