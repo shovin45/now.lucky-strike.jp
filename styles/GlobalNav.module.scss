@@ -1,0 +1,52 @@
+@import './variables';
+
+.button {
+  position: relative;
+  background-color: transparent;
+  overflow: hidden;
+  display: block;
+
+  outline: none;
+
+  &:before,
+  &:after {
+    content: '';
+    width: 0;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    transition: 0.3s;
+    transition-property: left right width opacity background-color;
+  }
+
+  &:before {
+    left: 50%;
+  }
+
+  &:after {
+    right: 50%;
+  }
+
+  &:hover,
+  &:focus {
+    color: colors('black');
+
+    &:before,
+    &:after {
+      width: 50%;
+      opacity: 1;
+    }
+  }
+
+  &:before,
+  &:after {
+    background-color: colors('blue');
+  }
+}
+.active {
+  transition: 0.2s;
+  color: colors('black');
+  background-color: colors('blue');
+}
