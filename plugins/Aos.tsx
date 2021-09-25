@@ -5,8 +5,10 @@ import AOS from 'aos'
 const Aos = () => {
   useEffect(() => {
     AOS.init({
-      easing: 'ease-out-sine',
-      duration: 600,
+      easing: 'ease-out-cubic',
+      duration: 1000,
+      offset: 400,
+      once: true,
     })
   }, [])
 }
