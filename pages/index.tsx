@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import Button from '../components/Button'
 import Section from '../components/Section'
+import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 
 import homeFooter from '../public/home-footer.png'
@@ -72,33 +73,13 @@ const Home: NextPageWithLayout = () => {
           </a>
         </div>
       </div>
-      <Link href={ticketUrl}>
-        <a>
-          <Button
-            className='my-12 sm:my-16 mx-auto'
-            text='チケットはこちら'
-            color='green'
-          />
-        </a>
-      </Link>
+      <TicketButton url={ticketUrl} />
 
-      <div>
-        <div>
-          {sections.map((_, index) => (
-            <Section key={index} {..._} />
-          ))}
-        </div>
+      {sections.map((_, index) => (
+        <Section key={index} {..._} />
+      ))}
 
-        <Link href={ticketUrl}>
-          <a>
-            <Button
-              className='my-12 sm:my-16 mx-auto'
-              text='チケットはこちら'
-              color='green'
-            />
-          </a>
-        </Link>
-      </div>
+      <TicketButton url={ticketUrl} />
 
       <Image src={homeFooter} alt='Picture of the author' />
     </div>

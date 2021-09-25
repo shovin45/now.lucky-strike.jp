@@ -42,8 +42,9 @@ const Section: React.FC<Props> = ({
                 {title}
               </h2>
             </hgroup>
+
             <Link href={href}>
-              <a>
+              <a tabIndex={-1}>
                 <Button
                   className='mx-auto lg:mx-0 mt-8 lg:mt-16'
                   text='詳細はこちら'

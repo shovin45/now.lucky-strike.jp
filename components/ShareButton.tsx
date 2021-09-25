@@ -28,6 +28,7 @@ const ShareButton: React.FC<Props> = ({ className }) => {
             <a
               className='block p-2 cursor-pointer'
               onClick={() => copyText(url)}
+              tabIndex={0}
             >
               <svg
                 className='align-bottom'
