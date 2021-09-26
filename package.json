@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.4",
+    "@types/gtag.js": "^0.0.7",
     "@types/react": "17.0.24",
     "autoprefixer": "^10.3.5",
     "eslint": "7.32.0",

@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app'
 
 import Window from '../plugins/Window'
 import AOS from '../plugins/Aos'
+import { useTracking } from '../hooks/useTracking'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -19,6 +20,7 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   AOS()
+  useTracking(process.env.NEXT_PUBLIC_TRACKING_ID)
 
   const getLayout = Component.getLayout ?? ((page) => page)
   return getLayout(
