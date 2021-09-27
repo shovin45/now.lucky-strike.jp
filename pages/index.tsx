@@ -2,9 +2,8 @@ import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 
-import Button from '../components/Button'
+import SEO from '../components/SEO'
 import Section from '../components/Section'
 import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
@@ -42,14 +41,7 @@ const ticketUrl = 'https://eplus.jp/'
 const Home: NextPageWithLayout = () => {
   return (
     <div className='relative min-h-screen'>
-      <Head>
-        <title>Lucky Strike ワンマンライブ「NOW」特設サイト</title>
-        <meta
-          name='description'
-          content='Lucky Strike ワンマンライブ「NOW」特設サイト'
-        />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
+      <SEO name='トップ' path='' />
 
       <div className='flex justify-center items-center p-10 sm:p-24 px-5 pt-16 w-full h-screen transition-height'>
         <div className='flex relative justify-center items-center w-full h-full border-8 sm:border-16'>
