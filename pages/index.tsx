@@ -7,11 +7,15 @@ import SEO from '../components/SEO'
 import Section from '../components/Section'
 import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
+import content from '../plugins/content'
 
 import homeFooter from '../public/home-footer.png'
 import content01 from '../public/content01.png'
 import content02 from '../public/content02.png'
 import content03 from '../public/content03.png'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { slice } from '../store/index'
 
 const sections = [
   {
@@ -36,9 +40,15 @@ const sections = [
     href: '/detail',
   },
 ]
-const ticketUrl = 'https://eplus.jp/'
 
 const Home: NextPageWithLayout = () => {
+  const dispatch = useDispatch()
+  const useState = () => {
+    return useSelector((state: { url: string }) => state)
+  }
+  const url = useState().url
+
+  dispatch(slice.actions.update(content.ticketUrl))
   return (
     <div className='relative min-h-screen'>
       <SEO name='トップ' path='' />
@@ -59,7 +69,7 @@ const Home: NextPageWithLayout = () => {
           <Image src='/home-img.png' alt='' width={500} height={400} />
           <a
             className='hidden md:inline-block absolute md:-right-20 md:bottom-2/4 p-1 text-sm font-bold border-2 transform rotate-90 translate-x-20 translate-y-1'
-            href={ticketUrl}
+            href={url}
             target='_blank'
             rel='noreferrer'
           >
@@ -67,13 +77,13 @@ const Home: NextPageWithLayout = () => {
           </a>
         </div>
       </div>
-      <TicketButton url={ticketUrl} />
+      <TicketButton url={url} />
 
       {sections.map((_, index) => (
         <Section key={index} {..._} />
       ))}
 
-      <TicketButton url={ticketUrl} />
+      <TicketButton url={url} />
 
       <Image src={homeFooter} alt='Picture of the author' />
     </div>

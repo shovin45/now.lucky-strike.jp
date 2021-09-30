@@ -87,6 +87,7 @@ TEL: [045-662-1221](tel:045-662-1221)
 ## グッズ
 
 Comming Soon...`,
+  ticketUrl: 'https://eplus.jp/',
 }
 
 export default data

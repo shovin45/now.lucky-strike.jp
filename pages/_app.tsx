@@ -3,6 +3,7 @@ import 'aos/dist/aos.css'
 
 import React from 'react'
 import type { ReactElement, ReactNode } from 'react'
+import { Provider } from 'react-redux'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
@@ -10,6 +11,8 @@ import Window from '../plugins/Window'
 import AOS from '../plugins/Aos'
 
 import GA from '../components/GA'
+
+import store from '../store/index'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -24,11 +27,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   const getLayout = Component.getLayout ?? ((page) => page)
   return getLayout(
-    <>
-      <GA />
-      <Component {...pageProps} />
-      <Window />
-    </>,
+    <Provider store={store}>
+      <>
+        <GA />
+        <Component {...pageProps} />
+        <Window />
+      </>
+    </Provider>,
   )
 }
 export default MyApp
