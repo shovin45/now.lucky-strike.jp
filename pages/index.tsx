@@ -1,6 +1,5 @@
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
-import Head from 'next/head'
 import Image from 'next/image'
 
 import SEO from '../components/SEO'
@@ -8,6 +7,7 @@ import Section from '../components/Section'
 import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 import content from '../plugins/content'
+import news from '../plugins/news'
 
 import homeFooter from '../public/home-footer.png'
 import content01 from '../public/content01.png'
@@ -54,9 +54,9 @@ const Home: NextPageWithLayout = () => {
       <SEO name='トップ' path='' />
 
       <div className='flex justify-center items-center p-10 sm:p-24 px-5 pt-16 w-full h-screen transition-height'>
-        <div className='flex relative justify-center items-center w-full h-full border-8 sm:border-16'>
+        <div className='flex relative justify-center items-center w-full h-full border-4 sm:border-16'>
           <h1
-            className={`absolute bottom-16 lg:bottom-2/4 -left-6 sm:-left-16 text-2xl font-bold translate-y-10 mix-blend-difference`}
+            className={`absolute bottom-16 lg:bottom-2/4 -left-4 sm:-left-16 text-2xl font-bold translate-y-10 mix-blend-difference`}
           >
             Lucky Strike
             <br />
@@ -78,6 +78,23 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       <TicketButton url={url} />
+
+      <div className='sm:py-16 pt-8 pb-16 mx-auto max-w-screen-md'>
+        <h2 className='py-5 text-2xl font-bold text-center'>NEWS</h2>
+        <ul>
+          {news.map((n, index) => (
+            <li key={index}>
+              <a
+                className='flex p-5 border-b'
+                href={n.link ? n.link : undefined}
+              >
+                <span className='w-48 sm:w-28'>{n.date}</span>{' '}
+                <span>{n.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {sections.map((_, index) => (
         <Section key={index} {..._} />
