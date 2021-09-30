@@ -6,11 +6,19 @@ type Props = {
   url: string
 }
 
+const click = () => {
+  if (!window) return
+  window.gtag('event', 'click', {
+    event_category: 'eplus_click',
+    event_label: 'チケット購入サイト遷移',
+  })
+}
+
 const TikectButton: FC<Props> = ({ url }) => {
   return (
     <div className='flex justify-center'>
       <Link href={url}>
-        <a tabIndex={-1}>
+        <a tabIndex={-1} onClick={click}>
           <Button
             className='inline-block my-12 sm:my-16 mx-auto'
             text='チケットはこちら'
