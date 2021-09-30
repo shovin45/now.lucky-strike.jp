@@ -31,7 +31,7 @@ const About: NextPageWithLayout = () => {
     <div className='relative pt-12 sm:pt-20 min-h-screen'>
       <SEO name={title} path='about' />
 
-      <NestedSection image={content01} title={title} position='center bottom'>
+      <NestedSection image={content01} title={title} position='center 80%'>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
       </NestedSection>
       <TicketButton url={url} />
