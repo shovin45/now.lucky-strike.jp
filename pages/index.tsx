@@ -52,6 +52,8 @@ const Home: NextPageWithLayout = () => {
             <br />
             ワンマンライブ「NOW」
             <br />
+            2022年1月15日（土）
+            <br />
             チケット発売中！
           </h1>
           <Image src='/home-img.png' alt='' width={500} height={400} />
