@@ -22,4 +22,9 @@
   a {
     @apply underline;
   }
+
+  ul {
+    @apply list-disc;
+    padding-inline-start: 1.6rem;
+  }
 }
