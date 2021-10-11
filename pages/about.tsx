@@ -36,7 +36,7 @@ const About: NextPageWithLayout = () => {
       <NestedSection image={content01} title={title} position='center 80%'>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{markdown}</ReactMarkdown>
       </NestedSection>
-      <TicketButton url={url} />
+
       <div className='flex justify-center'>
         <Link href='https://lucky-strike.jp'>
           <a>
