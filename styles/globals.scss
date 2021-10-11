@@ -46,3 +46,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@each $key, $color in $colors {
+  .--ls-text-#{$key} {
+    color: $color;
+  }
+}
