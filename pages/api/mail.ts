@@ -1,6 +1,7 @@
 import { createTransport } from 'nodemailer'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-const Mail = async (req, res) => {
+const Mail = async (req: NextApiRequest, res: NextApiResponse) => {
   const transporter = createTransport({
     service: 'gmail',
     port: 465,

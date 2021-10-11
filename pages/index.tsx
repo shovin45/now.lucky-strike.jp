@@ -17,6 +17,8 @@ import content03 from '../public/content03.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { slice } from '../store/index'
 
+import { Colors } from '../components/Button'
+
 const sections = [
   {
     title: 'Lucky Strike?',
@@ -24,7 +26,7 @@ const sections = [
     image: content01,
     reverse: false,
     href: '/about',
-    color: 'yellow',
+    color: 'yellow' as Colors,
   },
   {
     title: 'STORY',
@@ -32,7 +34,7 @@ const sections = [
     image: content02,
     reverse: true,
     href: '/story',
-    color: 'blue',
+    color: 'blue' as Colors,
   },
   {
     title: 'DETAIL',
@@ -40,7 +42,7 @@ const sections = [
     image: content03,
     reverse: false,
     href: '/detail',
-    color: 'pink',
+    color: 'pink' as Colors,
   },
 ]
 
