@@ -6,8 +6,6 @@ const Layout: NextPage = ({ children }) => {
   return (
     <>
       <GlobalNav />
-
-
       <main>{children}</main>
       <Footer />
     </>

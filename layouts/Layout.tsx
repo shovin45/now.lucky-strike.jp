@@ -1,6 +1,5 @@
 import GlobalNav from '../components/GlobalNav'
 import Footer from '../components/Footer'
-
 import type { NextPage } from 'next'
 
 const Layout: NextPage = ({ children }) => {

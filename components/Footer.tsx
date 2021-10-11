@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <p className='mb-2 text-lg font-bold'>Share</p>
         <ShareButton className='block mb-10' />
       </div>
-      <div className='--ls-text-blue underline hover:no-underline'>
+      <div className='underline hover:no-underline --ls-text-blue'>
         <Link href='/contact'>Contact - お問い合わせ</Link>
       </div>
       <small className='flex flex-col justify-center text-xs h-screen-10'>
