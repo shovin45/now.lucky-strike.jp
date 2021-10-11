@@ -108,7 +108,7 @@ TEL: [045-662-1221](tel:045-662-1221)
 - マスク
 - メンバー似顔絵キーホルダー
 - ポストカード etc...`,
-  ticketUrl: 'https://eplus.jp/',
+  ticketUrl: 'https://eplus.jp/sf/detail/3497840001-P0030001',
 }
 
 export default data

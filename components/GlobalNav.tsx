@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import content from '../plugins/content'
 
 import style from '../styles/GlobalNav.module.scss'
 
@@ -24,6 +25,10 @@ const nav = [
   {
     name: 'DETAIL',
     href: '/detail',
+  },
+  {
+    name: 'TICKET',
+    href: content.ticketUrl,
   },
 ]
 
