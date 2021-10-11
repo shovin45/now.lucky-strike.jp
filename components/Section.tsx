@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-import Button from './Button'
+import Button, { Colors } from './Button'
 
 type Props = {
   title?: string
@@ -10,6 +10,7 @@ type Props = {
   image?: any
   reverse?: boolean | null
   href: string
+  color: Colors
 }
 
 const Section: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const Section: React.FC<Props> = ({
   image,
   reverse,
   href,
+  color,
 }) => {
   return (
     <>
@@ -48,7 +50,7 @@ const Section: React.FC<Props> = ({
                   <Button
                     className='mx-auto lg:mx-0 mt-8'
                     text='詳細はこちら'
-                    color='yellow'
+                    color={color}
                     data-aos='fade-up'
                   />
                 </a>

@@ -2,15 +2,21 @@ import React from 'react'
 
 import button from '../styles/Button.module.scss'
 
+export type Colors = 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'pink'
+
 type Props = {
   text?: string
-  color: 'black' | 'white' | 'yellow' | 'green' | 'blue' | 'pink'
+  color: Colors
   className?: string
+  disabled?: boolean
 }
 
-const Button: React.FC<Props> = ({ text, color, className }) => {
+const Button: React.FC<Props> = ({ text, color, className, disabled }) => {
   return (
-    <button className={`${className} ${button.button} ${button[color]}`}>
+    <button
+      className={`${className} ${button.button} ${button[color]}`}
+      disabled={disabled}
+    >
       {text}{' '}
       <svg
         width='6'

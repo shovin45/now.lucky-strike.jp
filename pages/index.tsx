@@ -24,6 +24,7 @@ const sections = [
     image: content01,
     reverse: false,
     href: '/about',
+    color: 'yellow',
   },
   {
     title: 'STORY',
@@ -31,6 +32,7 @@ const sections = [
     image: content02,
     reverse: true,
     href: '/story',
+    color: 'blue',
   },
   {
     title: 'DETAIL',
@@ -38,6 +40,7 @@ const sections = [
     image: content03,
     reverse: false,
     href: '/detail',
+    color: 'pink',
   },
 ]
 
