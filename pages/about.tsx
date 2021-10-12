@@ -38,11 +38,11 @@ const About: NextPageWithLayout = () => {
       </NestedSection>
 
       <div className='flex justify-center'>
-        <Link href='https://lucky-strike.jp'>
+        <Link href='https://www.lucky-strike.jp/about'>
           <a>
             <Button
               className='mx-auto lg:mx-0 mt-8'
-              text='もっと見る'
+              text='詳しくはこちら'
               color='yellow'
             />
           </a>
