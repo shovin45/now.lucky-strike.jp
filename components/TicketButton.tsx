@@ -9,8 +9,7 @@ type Props = {
 const click = () => {
   if (!window) return
   window.gtag('event', 'click', {
-    event_category: 'eplus_click',
-    event_label: 'チケット購入サイト遷移',
+    eplus_click: 'eplus_click'
   })
 }
 
