@@ -1,5 +1,6 @@
 import { createClient } from 'microcms-js-sdk'
 import { format } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 import { ja } from 'date-fns/locale'
 
 const apiKey = process.env.NEXT_PUBLIC_MICROCMS_API_KEY || ''
@@ -13,7 +14,8 @@ export const getNews = async () => {
     endpoint: 'now-news',
   })
   const yyyyMMddFormat = (date: string) => {
-    return format(new Date(date), 'yyyy.MM.dd', { locale: ja })
+    const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo')
+    return format(jstDate, 'yyyy.MM.dd', { locale: ja })
   }
   return contents.map(
     ({
