@@ -1,6 +1,7 @@
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
+import { GetStaticProps } from 'next'
 
 import SEO from '../components/SEO'
 import Section from '../components/Section'
@@ -8,6 +9,7 @@ import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 import content from '../plugins/content'
 import news from '../plugins/news'
+import { client } from '../plugins/microcms'
 
 import homeFooter from '../public/home-footer.png'
 import content01 from '../public/content01.png'
@@ -46,12 +48,14 @@ const sections = [
   },
 ]
 
-const Home: NextPageWithLayout = () => {
+const Home: NextPageWithLayout = ({ contents }) => {
   const dispatch = useDispatch()
   const useState = () => {
     return useSelector((state: { url: string }) => state)
   }
   const url = useState().url
+
+  console.log(contents)
 
   dispatch(slice.actions.update(content.ticketUrl))
   return (
@@ -68,8 +72,8 @@ const Home: NextPageWithLayout = () => {
             ワンマンライブ「NOW」
             <br />
             2022年1月15日（土）
-            {/* <br />
-            チケット発売中！ */}
+            <br />
+            チケット発売中！
           </h1>
           <Image src='/home-img.png' alt='' width={500} height={400} />
           <a
@@ -89,10 +93,7 @@ const Home: NextPageWithLayout = () => {
         <ul>
           {news.map((n, index) => (
             <li key={index}>
-              <a
-                className='flex p-5 border-b'
-                href={n.link ? n.link : undefined}
-              >
+              <a className='flex p-5 border-b' href={n.link ? n.link : ''}>
                 <span className='w-48 sm:w-28'>{n.date}</span>{' '}
                 <span>{n.title}</span>
               </a>
@@ -114,6 +115,18 @@ const Home: NextPageWithLayout = () => {
 
 Home.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { contents } = await client.get({
+    endpoint: 'now-news',
+  })
+
+  return {
+    props: {
+      contents,
+    },
+  }
 }
 
 export default Home
