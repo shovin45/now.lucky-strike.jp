@@ -14,7 +14,8 @@ import GA from '../components/GA'
 
 import store from '../store/index'
 
-export type NextPageWithLayout = NextPage & {
+type Props = { contents: any }
+export type NextPageWithLayout<T = Props> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
 
@@ -36,4 +37,5 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     </Provider>,
   )
 }
+
 export default MyApp
