@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { configureStore } from '@reduxjs/toolkit'
 
+import content from '../plugins/content'
+
 export type state = {
-  url: string | null
+  url: string
 }
 
 export type UpdatePayload = string
 
 const initialState: state = {
-  url: '',
+  url: content.ticketUrl,
 }
 
 export const slice = createSlice({

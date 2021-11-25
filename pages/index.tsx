@@ -9,7 +9,7 @@ import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 import content from '../plugins/content'
 import news from '../plugins/news'
-import { client } from '../plugins/microcms'
+import { getNews } from '../plugins/microcms'
 
 import homeFooter from '../public/home-footer.png'
 import content01 from '../public/content01.png'
@@ -54,9 +54,6 @@ const Home: NextPageWithLayout = ({ contents }) => {
     return useSelector((state: { url: string }) => state)
   }
   const url = useState().url
-
-  console.log(contents)
-
   dispatch(slice.actions.update(content.ticketUrl))
   return (
     <div className='relative min-h-screen'>
@@ -91,9 +88,12 @@ const Home: NextPageWithLayout = ({ contents }) => {
       <div className='sm:py-16 pt-8 pb-16 mx-auto max-w-screen-md'>
         <h2 className='py-5 text-2xl font-bold text-center'>NEWS</h2>
         <ul>
-          {news.map((n, index) => (
+          {contents.map((n, index) => (
             <li key={index}>
-              <a className='flex p-5 border-b' href={n.link ? n.link : ''}>
+              <a
+                className='flex p-5 border-b'
+                href={n.link ? n.link : undefined}
+              >
                 <span className='w-48 sm:w-28'>{n.date}</span>{' '}
                 <span>{n.title}</span>
               </a>
@@ -113,15 +113,12 @@ const Home: NextPageWithLayout = ({ contents }) => {
   )
 }
 
-Home.getLayout = (page: ReactElement) => {
+export const getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { contents } = await client.get({
-    endpoint: 'now-news',
-  })
-
+export const getStaticProps: GetStaticProps = async () => {
+  const contents = await getNews()
   return {
     props: {
       contents,
