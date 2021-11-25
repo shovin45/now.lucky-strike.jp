@@ -8,8 +8,9 @@ type Props = {
 
 const click = () => {
   if (!window) return
+  if (!window.gtag) return
   window.gtag('event', 'click', {
-    eplus_click: 'eplus_click'
+    eplus_click: 'eplus_click',
   })
 }
 
