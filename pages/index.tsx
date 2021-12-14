@@ -113,7 +113,7 @@ const Home: NextPageWithLayout = ({ contents }) => {
   )
 }
 
-export const getLayout = (page: ReactElement) => {
+Home.getLayout = (page: ReactElement) => {
   return <Layout>{page}</Layout>
 }
 
