@@ -104,8 +104,10 @@ const Home: NextPageWithLayout = ({ contents }) => {
                     data-aos-delay={50 * (index - 2)}
                   >
                     <a className='flex justify-start p-5 border-b'>
-                      <span className='w-48 sm:w-28'>{n.date}</span>{' '}
-                      <span className={n.link ? 'hover:underline' : ''}>
+                      <span className='w-28'>{n.date}</span>{' '}
+                      <span
+                        className={(n.link ? 'hover:underline' : '') + ' w-4/5'}
+                      >
                         {n.title}
                       </span>
                     </a>
@@ -116,14 +118,16 @@ const Home: NextPageWithLayout = ({ contents }) => {
             return arr
           }, [])}
         </ul>
-        <Button
-          className='mx-auto lg:mx-0 mt-8'
-          color='white'
-          text={!open ? 'すべて見る' : '閉じる'}
-          onClick={() => {
-            setOpen(!open)
-          }}
-        />
+        <div className='flex justify-center'>
+          <Button
+            className='mx-auto lg:mx-0 mt-8'
+            color='white'
+            text={!open ? 'すべて見る' : '閉じる'}
+            onClick={() => {
+              setOpen(!open)
+            }}
+          />
+        </div>
       </div>
 
       {sections.map((_, index) => (
