@@ -9,13 +9,21 @@ type Props = {
   color: Colors
   className?: string
   disabled?: boolean
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button: React.FC<Props> = ({ text, color, className, disabled }) => {
+const Button: React.FC<Props> = ({
+  text,
+  color,
+  className,
+  disabled,
+  onClick,
+}) => {
   return (
     <button
       className={`${className} ${button.button} ${button[color]}`}
       disabled={disabled}
+      onClick={onClick}
     >
       {text}{' '}
       <svg

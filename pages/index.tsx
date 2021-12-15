@@ -1,11 +1,15 @@
+import React from 'react'
+
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { GetStaticProps } from 'next'
 
 import SEO from '../components/SEO'
 import Section from '../components/Section'
 import TicketButton from '../components/TicketButton'
+import Button from '../components/Button'
 import Layout from '../layouts/Layout'
 import content from '../plugins/content'
 import news from '../plugins/news'
@@ -55,6 +59,8 @@ const Home: NextPageWithLayout = ({ contents }) => {
   }
   const url = useState().url
   dispatch(slice.actions.update(content.ticketUrl))
+
+  const [open, setOpen] = React.useState(false)
   return (
     <div className='relative min-h-screen'>
       <SEO name='トップ' path='' />
@@ -88,18 +94,36 @@ const Home: NextPageWithLayout = ({ contents }) => {
       <div className='sm:py-16 pt-8 pb-16 mx-auto max-w-screen-md'>
         <h2 className='py-5 text-2xl font-bold text-center'>NEWS</h2>
         <ul>
-          {contents.map((n, index) => (
-            <li key={index}>
-              <a
-                className='flex p-5 border-b'
-                href={n.link ? n.link : undefined}
-              >
-                <span className='w-48 sm:w-28'>{n.date}</span>{' '}
-                <span>{n.title}</span>
-              </a>
-            </li>
-          ))}
+          {contents.reduce((arr: any, n, index) => {
+            if (index < 3 || open) {
+              arr.push(
+                <li key={index}>
+                  <Link
+                    href={n.link || ''}
+                    data-aos='fade-up'
+                    data-aos-delay={50 * (index - 2)}
+                  >
+                    <a className='flex justify-start p-5 border-b'>
+                      <span className='w-48 sm:w-28'>{n.date}</span>{' '}
+                      <span className={n.link ? 'hover:underline' : ''}>
+                        {n.title}
+                      </span>
+                    </a>
+                  </Link>
+                </li>,
+              )
+            }
+            return arr
+          }, [])}
         </ul>
+        <Button
+          className='mx-auto lg:mx-0 mt-8'
+          color='white'
+          text={!open ? 'すべて見る' : '閉じる'}
+          onClick={() => {
+            setOpen(!open)
+          }}
+        />
       </div>
 
       {sections.map((_, index) => (
