@@ -142,7 +142,7 @@ const Contact: NextPageWithLayout = () => {
             </span>
 
             {loading ? (
-              <div className='lds-ring mt-3'>
+              <div className='mt-3 lds-ring'>
                 <div></div>
                 <div></div>
                 <div></div>

@@ -9,23 +9,18 @@ export const client = createClient({
   apiKey,
 })
 
+const yyyyMMddFormat = (date: string) => {
+  const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo')
+  return format(jstDate, 'yyyy.MM.dd', { locale: ja })
+}
+
 export const getNews = async () => {
-  const { contents } = await client.get({
+  const { contents } = await client.getList<NewsApiModels>({
     endpoint: 'now-news',
   })
-  const yyyyMMddFormat = (date: string) => {
-    const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo')
-    return format(jstDate, 'yyyy.MM.dd', { locale: ja })
-  }
+
   return contents.map(
-    ({
-      date,
-      createdAt,
-      updatedAt,
-      publishedAt,
-      revisedAt,
-      ...params
-    }: NewsApiModels) => {
+    ({ date, createdAt, updatedAt, publishedAt, revisedAt, ...params }) => {
       return {
         ...params,
         date: yyyyMMddFormat(date),
@@ -36,4 +31,20 @@ export const getNews = async () => {
       }
     },
   )
+}
+
+export const getPost = async (id: string) => {
+  const res = await client.getListDetail<NewsApiModels>({
+    endpoint: 'now-news',
+    contentId: id,
+  })
+
+  return {
+    ...res,
+    date: yyyyMMddFormat(res.date),
+    createdAt: yyyyMMddFormat(res.createdAt),
+    updatedAt: yyyyMMddFormat(res.updatedAt),
+    publishedAt: yyyyMMddFormat(res.publishedAt),
+    revisedAt: yyyyMMddFormat(res.revisedAt),
+  }
 }

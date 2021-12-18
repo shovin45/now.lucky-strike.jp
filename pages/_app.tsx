@@ -14,7 +14,7 @@ import GA from '../components/GA'
 
 import store from '../store/index'
 
-type Props = { contents: Array<NewsApiModels> }
+type Props = { contents: Array<NewsApiModels> | NewsApiModels }
 export type NextPageWithLayout<T = Props> = NextPage<T> & {
   getLayout?: (page: ReactElement) => ReactNode
 }

@@ -7,4 +7,5 @@ declare interface NewsApiModels {
   title: string
   link: string
   date: string
+  content?: string
 }

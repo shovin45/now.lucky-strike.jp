@@ -1,5 +1,4 @@
 import React from 'react'
-
 import type { NextPageWithLayout } from './_app'
 import type { ReactElement } from 'react'
 import Image from 'next/image'
@@ -8,8 +7,8 @@ import { GetStaticProps } from 'next'
 
 import SEO from '../components/SEO'
 import Section from '../components/Section'
-import TicketButton from '../components/TicketButton'
 import Button from '../components/Button'
+import TicketButton from '../components/TicketButton'
 import Layout from '../layouts/Layout'
 import content from '../plugins/content'
 import news from '../plugins/news'
@@ -61,6 +60,8 @@ const Home: NextPageWithLayout = ({ contents }) => {
   dispatch(slice.actions.update(content.ticketUrl))
 
   const [open, setOpen] = React.useState(false)
+
+  if (!Array.isArray(contents)) return <></>
   return (
     <div className='relative min-h-screen'>
       <SEO name='トップ' path='' />
@@ -93,13 +94,14 @@ const Home: NextPageWithLayout = ({ contents }) => {
 
       <div className='sm:py-16 pt-8 pb-16 mx-auto max-w-screen-md'>
         <h2 className='py-5 text-2xl font-bold text-center'>NEWS</h2>
+
         <ul>
           {contents.reduce((arr: any, n, index) => {
             if (index < 3 || open) {
               arr.push(
                 <li key={index}>
                   <Link
-                    href={n.link || ''}
+                    href={n.content ? `/news/${n.id}` : n.link || ''}
                     data-aos='fade-up'
                     data-aos-delay={50 * (index - 2)}
                   >

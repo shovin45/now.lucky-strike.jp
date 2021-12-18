@@ -12,7 +12,9 @@ const Footer: React.FC = () => {
         <ShareButton className='block mb-10' />
       </div>
       <div className='underline hover:no-underline --ls-text-blue'>
-        <Link href='/contact'>Contact - お問い合わせ</Link>
+        <Link href='/contact'>
+          <a>Contact - お問い合わせ</a>
+        </Link>
       </div>
       <small className='flex flex-col justify-center text-xs h-screen-10'>
         © 2021 — Lucky Strike
