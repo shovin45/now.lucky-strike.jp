@@ -10,6 +10,7 @@ export const client = createClient({
 })
 
 const yyyyMMddFormat = (date: string) => {
+  if (!date) return
   const jstDate = utcToZonedTime(new Date(date), 'Asia/Tokyo')
   return format(jstDate, 'yyyy.MM.dd', { locale: ja })
 }
@@ -26,8 +27,8 @@ export const getNews = async () => {
         date: yyyyMMddFormat(date),
         createdAt: yyyyMMddFormat(createdAt),
         updatedAt: yyyyMMddFormat(updatedAt),
-        publishedAt: yyyyMMddFormat(publishedAt),
-        revisedAt: yyyyMMddFormat(revisedAt),
+        publishedAt: yyyyMMddFormat(publishedAt) || '',
+        revisedAt: yyyyMMddFormat(revisedAt) || '',
       }
     },
   )
@@ -44,7 +45,24 @@ export const getPost = async (id: string) => {
     date: yyyyMMddFormat(res.date),
     createdAt: yyyyMMddFormat(res.createdAt),
     updatedAt: yyyyMMddFormat(res.updatedAt),
-    publishedAt: yyyyMMddFormat(res.publishedAt),
-    revisedAt: yyyyMMddFormat(res.revisedAt),
+    publishedAt: yyyyMMddFormat(res.publishedAt) || '',
+    revisedAt: yyyyMMddFormat(res.revisedAt) || '',
+  }
+}
+export const getPostPreview = async (id: string, draftKey: string) => {
+  if (!id && !draftKey) return
+  const res = await client.getListDetail<NewsApiModels>({
+    endpoint: 'now-news',
+    contentId: id,
+    queries: { draftKey },
+  })
+
+  return {
+    ...res,
+    date: yyyyMMddFormat(res.date) || '',
+    createdAt: yyyyMMddFormat(res.createdAt) || '',
+    updatedAt: yyyyMMddFormat(res.updatedAt) || '',
+    publishedAt: yyyyMMddFormat(res.publishedAt) || '',
+    revisedAt: yyyyMMddFormat(res.revisedAt) || '',
   }
 }
